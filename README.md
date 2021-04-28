@@ -21,7 +21,7 @@ The TARGA image format streamed by HzMod is non-standard, so this repository is 
 
 https://cdn.discordapp.com/attachments/836413155894100050/837059467703091210/TGAHZ.png
 
-bit order: ARRRRRGG GGGBBBBB
+Bit order: ARRRRRGG GGGBBBBB
 
 ![](https://cdn.discordapp.com/attachments/836413155894100050/837059467703091210/TGAHZ.png)
 
