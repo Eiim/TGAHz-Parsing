@@ -22,36 +22,36 @@ def torgb(b2, b1):
 #	r = int((b2%128)/4)
 #	g = (b2%4)*8 + int(b1/32)
 #	b = b1%32
-#	ra = r*4+int(r/16)
-#	ga = g*4+int(r/16)
-#	ba = b*4+int(r/16)
+#	ra = r*8+int(r/16)
+#	ga = g*8+int(r/16)
+#	ba = b*8+int(r/16)
 
 #	RRRRRGGG GGGBBBBB
 #	r = int(b2/8)
 #	g = (b2%8)*8 + int(b1/32)
 #	b = b1%32
-#	ra = r*4+int(r/16)
-#	ga = g*2+int(r/16)
-#	ba = b*4+int(r/16)
+#	ra = r*8+int(r/16)
+#	ga = g*4+int(r/16)
+#	ba = b*8+int(r/16)
 
 #	RRRRRRGG GGGBBBBB
 #	r = int(b2/4)
 #	g = (b2%4)*8 + int(b1/32)
 #	b = b1%32
-#	ra = r*2+int(r/16)
-#	ga = g*4+int(r/16)
-#	ba = b*4+int(r/16)
+#	ra = r*4+int(r/16)
+#	ga = g*8+int(r/16)
+#	ba = b*8+int(r/16)
 
 #	RRRRRGGG GGBBBBBA
 	r = int(b2/8)
 	g = (b2%8)*4 + int(b1/64)
 	b = int((b1%64)/2)
-	ra = r*4+int(r/16)
-	ga = g*4+int(r/16)
-	ba = b*4+int(r/16)
+	ra = r*8+int(r/16)
+	ga = g*8+int(r/16)
+	ba = b*8+int(r/16)
 	
-	if(b1%2 == 0):
-		ra,ga,ba = (255,255,255)
+	#if(b1%2 == 0):
+		#ra,ga,ba = (255,255,255)
 
 	return(r,g,b,ra,ga,ba)
 
