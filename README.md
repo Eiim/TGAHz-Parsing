@@ -1,4 +1,4 @@
-# TGAHz-Parsing
+# TGAHz Parsing
 
 ### What is this?
 
