@@ -53,6 +53,6 @@ https://cdn.discordapp.com/attachments/836413155894100050/837097268192346142/TGA
 
 # Running the Script
 
-Right now, the TGA image file and header information are hard-coded into the python script.
+Right now, the TGA image file and header information are hard-coded into the Python script.
 
 This script is written in Python 3.
