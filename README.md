@@ -45,6 +45,12 @@ Bit order: RRRRRGGG GGBBBBBA
 
 ![](https://cdn.discordapp.com/attachments/836413155894100050/837069483596185620/RRRRRGGG_GGBBBBBA.png)
 
+## Commit [4c910bf2f3f5fc08fdeacda75d5cde884d9f5a98](https://github.com/Eiim/TGAHz-Parsing/commit/4c910bf2f3f5fc08fdeacda75d5cde884d9f5a98)
+
+https://cdn.discordapp.com/attachments/836413155894100050/837097268192346142/TGAHZ.png
+
+![](https://cdn.discordapp.com/attachments/836413155894100050/837097268192346142/TGAHZ.png)
+
 # Running the Script
 
 Right now, the TGA image file and header information are hard-coded into the python script.
