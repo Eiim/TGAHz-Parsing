@@ -42,3 +42,9 @@ https://cdn.discordapp.com/attachments/836413155894100050/837069483596185620/RRR
 Bit order: RRRRRGGG GGBBBBBA
 
 ![](https://cdn.discordapp.com/attachments/836413155894100050/837069483596185620/RRRRRGGG_GGBBBBBA.png)
+
+# Running the Script
+
+Right now, the TGA image file and header information are hard-coded into the python script.
+
+This script is written in Python 3.
