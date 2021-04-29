@@ -12,46 +12,46 @@ class colors:
 
 def printrgb(rgb):
 	# Print formatted color as ARRRRRGG GGGBBBBB
-	print(f"{colors.PURPLE}"+rgb[0]+f"{colors.RED}"+rgb[1:6]+f"{colors.GREEN}"+rgb[6:12]+f"{colors.BLUE}"+rgb[12:]+f"{colors.ENDC}  ", end='')
+	print(f"{colors.RED}"+rgb[0:5]+f"{colors.GREEN}"+rgb[5:10]+f"{colors.BLUE}"+rgb[11:]+f"{colors.PURPLE}"+rgb[16]+f"{colors.ENDC}  ", end='')
 
 def torgb(b2, b1):
 
 # Evolving based on how we interpret the format
 
-#	ARRRRRGG GGGBBBBB
-#	r = int((b2%128)/4)
-#	g = (b2%4)*8 + int(b1/32)
-#	b = b1%32
-#	ra = r*4+int(r/16)
-#	ga = g*4+int(r/16)
-#	ba = b*4+int(r/16)
+#	RRRRRGGG GGBBBBBA
+	r = int(b2/8)
+	g = (b2%8)*4 + int(b1/64)
+	b = int((b1%64)/2)
+#	Convert to 24-bit color (simple algorithm)
+	ra = r*8+int(r/4)
+	ga = g*8+int(g/4)
+	ba = b*8+int(b/4)
 
-#	RRRRRGGG GGGBBBBB
-#	r = int(b2/8)
-#	g = (b2%8)*8 + int(b1/32)
-#	b = b1%32
-#	ra = r*4+int(r/16)
-#	ga = g*2+int(r/16)
-#	ba = b*4+int(r/16)
+	return(r,g,b,ra,ga,ba)
+	
 
-#	RRRRRRGG GGGBBBBB
-#	r = int(b2/4)
-#	g = (b2%4)*8 + int(b1/32)
-#	b = b1%32
-#	ra = r*2+int(r/16)
-#	ga = g*4+int(r/16)
-#	ba = b*4+int(r/16)
+def torgbspecial(b2, b1):
+
+# Evolving based on how we interpret the format
 
 #	RRRRRGGG GGBBBBBA
 	r = int(b2/8)
 	g = (b2%8)*4 + int(b1/64)
 	b = int((b1%64)/2)
-	ra = r*4+int(r/16)
-	ga = g*4+int(r/16)
-	ba = b*4+int(r/16)
-	
-	if(b1%2 == 0):
-		ra,ga,ba = (255,255,255)
+
+#	RRRRRGGG AGGBBBBB
+#	r = int(b2/8)
+#	g = (b2%8)*4 + int((b1%128)/32)
+#	b = b1%32
+
+#	r = int((b1%128)/4)
+#	g = (b1%4)*8 + int(b2/32)
+#	b = b2%32
+
+#	Convert to 24-bit color (simple algorithm)
+	ra = r*8+int(r/4)
+	ga = g*8+int(g/4)
+	ba = b*8+int(b/4)
 
 	return(r,g,b,ra,ga,ba)
 
@@ -100,7 +100,7 @@ while(i < len(data)):
 		if(image):
 			# bytes to 5-bit and 8-bit RGB
 			r,g,b,ra,ga,ba = torgb(b2,b1)
-			print(b2,b1,r,g,b)
+			#print(b2,b1,r,g,b)
 			
 			for j in range(packlen):
 				imgdat.append(ra)
@@ -110,8 +110,27 @@ while(i < len(data)):
 		# Skip past two color bytes
 		i = i + 2
 	else:
-		j = 1
-		while(j <= packlen):
+
+
+#ChainSwordCS: I'm thinking this crap we did won't be necessary per se...
+#
+#		# Use last pair first
+#		
+#		# Two color bytes in LE order
+#		b1 = data[i+packlen*2]
+#		b2 = data[i+packlen*2+1]
+#		
+#		if(log):
+#			printrgb(format(b2, '08b')+" "+format(b1, '08b'))
+#		if(image):
+#			r,g,b,ra,ga,ba = torgbspecial(b2,b1)
+#			
+#			imgdat.append(ra)
+#			imgdat.append(ga)
+#			imgdat.append(ba)
+#
+		j = 0
+		while(j < packlen):
 			# Two color bytes in LE order
 			b1 = data[i+j*2]
 			b2 = data[i+j*2+1]
@@ -121,7 +140,7 @@ while(i < len(data)):
 			if(image):
 				# bytes to 5-bit and 8-bit RGB
 				r,g,b,ra,ga,ba = torgb(b2,b1)
-				print(b2,b1,r,g,b)
+				#print(b2,b1,r,g,b)
 				
 				imgdat.append(ra)
 				imgdat.append(ga)
