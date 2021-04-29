@@ -12,7 +12,7 @@ class colors:
 
 def printrgb(rgb):
 	# Print formatted color as ARRRRRGG GGGBBBBB
-	print(f"{colors.RED}"+rgb[0:5]+f"{colors.GREEN}"+rgb[5:11]+f"{colors.BLUE}"+rgb[11:]+f"{colors.PURPLE}"+rgb[16]+f"{colors.ENDC}  ", end='')
+	print(f"{colors.RED}"+rgb[0:5]+f"{colors.GREEN}"+rgb[5:10]+f"{colors.BLUE}"+rgb[11:]+f"{colors.PURPLE}"+rgb[16]+f"{colors.ENDC}  ", end='')
 
 def torgb(b2, b1):
 
