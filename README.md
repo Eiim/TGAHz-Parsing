@@ -57,6 +57,16 @@ https://cdn.discordapp.com/attachments/836413155894100050/837153929284157491/TGA
 
 ![](https://cdn.discordapp.com/attachments/836413155894100050/837153929284157491/TGAHZ.png)
 
+## Commit []()
+
+Fixed a bug in the byte-grabbing code which was causing weird errors at every RAW packet. This was the only bug remaining in the past two revisions.
+
+Also, colors are pretty darn accurate.
+
+https://cdn.discordapp.com/attachments/836413155894100050/837196767270666310/TGAHZ.png
+
+![](https://cdn.discordapp.com/attachments/836413155894100050/837196767270666310/TGAHZ.png)
+
 # Running the Script
 
 Right now, the TGA image file and header information are hard-coded into the Python script.

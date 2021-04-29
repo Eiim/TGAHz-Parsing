@@ -16,32 +16,10 @@ def printrgb(rgb):
 
 def torgb(b2, b1):
 
-# Evolving based on how we interpret the format
-
 #	RRRRRGGG GGBBBBBA
 	r = int(b2/8)
 	g = (b2%8)*4 + int(b1/64)
 	b = int((b1%64)/2)
-#	Convert to 24-bit color (simple algorithm)
-	ra = r*8+int(r/4)
-	ga = g*8+int(g/4)
-	ba = b*8+int(b/4)
-
-	return(r,g,b,ra,ga,ba)
-	
-
-def torgbspecial(b2, b1):
-
-# Evolving based on how we interpret the format
-
-	r = int(b2/8)
-	g = (b2%8)*4 + int((b1%128)/32)
-	b = b1%32
-
-#	r = int((b1%128)/4)
-#	g = (b1%4)*8 + int(b2/32)
-#	b = b2%32
-
 #	Convert to 24-bit color (simple algorithm)
 	ra = r*8+int(r/4)
 	ga = g*8+int(g/4)
@@ -104,23 +82,7 @@ while(i < len(data)):
 		# Skip past two color bytes
 		i = i + 2
 	else:
-	
-		# Use last pair first
-		
-		# Two color bytes in LE order
-		b1 = data[i+packlen*2]
-		b2 = data[i+packlen*2+1]
-		
-		if(log):
-			printrgb(format(b2, '08b')+" "+format(b1, '08b'))
-		if(image):
-			r,g,b,ra,ga,ba = torgbspecial(b2,b1)
-			
-			imgdat.append(ra)
-			imgdat.append(ga)
-			imgdat.append(ba)
-
-		j = 1
+		j = 0
 		while(j < packlen):
 			# Two color bytes in LE order
 			b1 = data[i+j*2]
