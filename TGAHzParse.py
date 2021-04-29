@@ -18,40 +18,34 @@ def torgb(b2, b1):
 
 # Evolving based on how we interpret the format
 
-#	ARRRRRGG GGGBBBBB
-#	r = int((b2%128)/4)
-#	g = (b2%4)*8 + int(b1/32)
-#	b = b1%32
-#	ra = r*8+int(r/16)
-#	ga = g*8+int(r/16)
-#	ba = b*8+int(r/16)
-
-#	RRRRRGGG GGGBBBBB
-#	r = int(b2/8)
-#	g = (b2%8)*8 + int(b1/32)
-#	b = b1%32
-#	ra = r*8+int(r/16)
-#	ga = g*4+int(r/16)
-#	ba = b*8+int(r/16)
-
-#	RRRRRRGG GGGBBBBB
-#	r = int(b2/4)
-#	g = (b2%4)*8 + int(b1/32)
-#	b = b1%32
-#	ra = r*4+int(r/16)
-#	ga = g*8+int(r/16)
-#	ba = b*8+int(r/16)
-
 #	RRRRRGGG GGBBBBBA
 	r = int(b2/8)
 	g = (b2%8)*4 + int(b1/64)
 	b = int((b1%64)/2)
-	ra = r*8+int(r/16)
-	ga = g*8+int(r/16)
-	ba = b*8+int(r/16)
+#	Convert to 24-bit color (simple algorithm)
+	ra = r*8+int(r/4)
+	ga = g*8+int(r/4)
+	ba = b*8+int(r/4)
+
+	return(r,g,b,ra,ga,ba)
 	
-	#if(b1%2 == 0):
-		#ra,ga,ba = (255,255,255)
+
+def torgbspecial(b2, b1):
+
+# Evolving based on how we interpret the format
+
+	r = int(b2/8)
+	g = (b2%8)*4 + int((b1%128)/32)
+	b = b1%32
+
+#	r = int((b1%128)/4)
+#	g = (b1%4)*8 + int(b2/32)
+#	b = b2%32
+
+#	Convert to 24-bit color (simple algorithm)
+	ra = r*8+int(r/4)
+	ga = g*8+int(r/4)
+	ba = b*8+int(r/4)
 
 	return(r,g,b,ra,ga,ba)
 
@@ -88,7 +82,7 @@ while(i < len(data)):
 	# Skip header byte
 	i = i + 1;
 	
-	if(log):
+	if(log and not rle):
 		print(str(packlen).rjust(4)+" ",end='')
 	if(rle):
 		# Two color bytes in LE order
@@ -110,8 +104,24 @@ while(i < len(data)):
 		# Skip past two color bytes
 		i = i + 2
 	else:
+	
+		# Use last pair first
+		
+		# Two color bytes in LE order
+		b1 = data[i+packlen*2]
+		b2 = data[i+packlen*2+1]
+		
+		if(log):
+			printrgb(format(b2, '08b')+" "+format(b1, '08b'))
+		if(image):
+			r,g,b,ra,ga,ba = torgbspecial(b2,b1)
+			
+			imgdat.append(ra)
+			imgdat.append(ga)
+			imgdat.append(ba)
+
 		j = 1
-		while(j <= packlen):
+		while(j < packlen):
 			# Two color bytes in LE order
 			b1 = data[i+j*2]
 			b2 = data[i+j*2+1]
@@ -131,7 +141,7 @@ while(i < len(data)):
 			j = j + 1
 		# Skip past raw color data
 		i = i + packlen*2
-	if(log):
+	if(log and not rle):
 		# Need newline after all those colors
 		print()
 
