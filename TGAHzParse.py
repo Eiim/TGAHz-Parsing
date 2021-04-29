@@ -82,7 +82,7 @@ while(i < len(data)):
 	# Skip header byte
 	i = i + 1;
 	
-	if(log and not rle):
+	if(log):
 		print(str(packlen).rjust(4)+" ",end='')
 	if(rle):
 		# Two color bytes in LE order
@@ -141,7 +141,7 @@ while(i < len(data)):
 			j = j + 1
 		# Skip past raw color data
 		i = i + packlen*2
-	if(log and not rle):
+	if(log):
 		# Need newline after all those colors
 		print()
 
