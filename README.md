@@ -51,8 +51,14 @@ https://cdn.discordapp.com/attachments/836413155894100050/837097268192346142/TGA
 
 ![](https://cdn.discordapp.com/attachments/836413155894100050/837097268192346142/TGAHZ.png)
 
+## Commit [60452bcff908b58125ce49026add7b1556cd39ae](https://github.com/Eiim/TGAHz-Parsing/commit/60452bcff908b58125ce49026add7b1556cd39ae)
+
+https://cdn.discordapp.com/attachments/836413155894100050/837153929284157491/TGAHZ.png
+
+![](https://cdn.discordapp.com/attachments/836413155894100050/837153929284157491/TGAHZ.png)
+
 # Running the Script
 
 Right now, the TGA image file and header information are hard-coded into the Python script.
 
-This script is written in Python 3.
+This script is written in Python 3. It requires the 'pillow' module.
