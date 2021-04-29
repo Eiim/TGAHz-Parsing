@@ -24,8 +24,8 @@ def torgb(b2, b1):
 	b = int((b1%64)/2)
 #	Convert to 24-bit color (simple algorithm)
 	ra = r*8+int(r/4)
-	ga = g*8+int(r/4)
-	ba = b*8+int(r/4)
+	ga = g*8+int(g/4)
+	ba = b*8+int(b/4)
 
 	return(r,g,b,ra,ga,ba)
 	
@@ -44,8 +44,8 @@ def torgbspecial(b2, b1):
 
 #	Convert to 24-bit color (simple algorithm)
 	ra = r*8+int(r/4)
-	ga = g*8+int(r/4)
-	ba = b*8+int(r/4)
+	ga = g*8+int(g/4)
+	ba = b*8+int(b/4)
 
 	return(r,g,b,ra,ga,ba)
 
