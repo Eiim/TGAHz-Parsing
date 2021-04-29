@@ -12,7 +12,7 @@ class colors:
 
 def printrgb(rgb):
 	# Print formatted color as ARRRRRGG GGGBBBBB
-	print(f"{colors.PURPLE}"+rgb[0]+f"{colors.RED}"+rgb[1:6]+f"{colors.GREEN}"+rgb[6:12]+f"{colors.BLUE}"+rgb[12:]+f"{colors.ENDC}  ", end='')
+	print(f"{colors.RED}"+rgb[0:5]+f"{colors.GREEN}"+rgb[5:11]+f"{colors.BLUE}"+rgb[11:]+f"{colors.PURPLE}"+rgb[16]+f"{colors.ENDC}  ", end='')
 
 def torgb(b2, b1):
 
@@ -100,7 +100,7 @@ while(i < len(data)):
 		if(image):
 			# bytes to 5-bit and 8-bit RGB
 			r,g,b,ra,ga,ba = torgb(b2,b1)
-			print(b2,b1,r,g,b)
+			#print(b2,b1,r,g,b)
 			
 			for j in range(packlen):
 				imgdat.append(ra)
@@ -121,7 +121,7 @@ while(i < len(data)):
 			if(image):
 				# bytes to 5-bit and 8-bit RGB
 				r,g,b,ra,ga,ba = torgb(b2,b1)
-				print(b2,b1,r,g,b)
+				#print(b2,b1,r,g,b)
 				
 				imgdat.append(ra)
 				imgdat.append(ga)
