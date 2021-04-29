@@ -72,7 +72,6 @@ while(i < len(data)):
 		if(image):
 			# bytes to 5-bit and 8-bit RGB
 			r,g,b,ra,ga,ba = torgb(b2,b1)
-			#print(b2,b1,r,g,b)
 			
 			for j in range(packlen):
 				imgdat.append(ra)
@@ -109,7 +108,8 @@ while(i < len(data)):
 
 if(image):
 	# Should be 288000
-	print(len(imgdat))
+	if(log):
+		print(len(imgdat))
 	
 	# Needs to be immutable, so convert to bytes instead of bytearray
 	im = Image.frombytes('RGB', (240, 400), bytes(imgdat))
